@@ -20,8 +20,9 @@ fs.readFile('client_secret.json').then(async function processClientSecrets(conte
 
 
 function handlePage(authority,response){
-    for(let i = 0;i<response.data.items.length;i++){
-	console.log(response.data.items[i].snippet.title+"\t\t\t"+response.data.items[i].snippet.channelId);
+    let items = response.data.items;
+    for(let item of items){
+	console.log(item.snippet.title+" ".repeat(60-item.snippet.title.length)+item.snippet.channelId);
     }
     if(response.data.nextPageToken){
 	getSubscriptions(authority, response.data.nextPageToken)
