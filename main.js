@@ -22,11 +22,11 @@ fs.readFile('client_secret.json').then(async function processClientSecrets(conte
 function handlePage(authority,response){
     let items = response.data.items;
     for(let item of items){
-	console.log(item.snippet.title+" ".repeat(60-item.snippet.title.length)+item.snippet.channelId);
+	console.log(item.snippet.title+" ".repeat(60-item.snippet.title.length)+item.snippet.resourceId.channelId);
     }
     if(response.data.nextPageToken){
-	getSubscriptions(authority, response.data.nextPageToken)
-	    .then(handlePage.bind(null,authority))
+        getSubscriptions(authority, response.data.nextPageToken)
+            .then(handlePage.bind(null,authority))
     }
 }
 
