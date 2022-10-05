@@ -123,13 +123,10 @@ async function storeToken(token) {
 function getSubscriptions(auth, page) {
     var service = google.youtube("v3");
     return service.subscriptions.list({
-	//channelId: 'UC2WKfnJRx2fIvP2zwQ-XP1w',
 	mine:true,
 	auth,
 	maxResults:50,
 	part:"snippet",
 	pageToken: page ? page:""
-    });/*.then(response=>{
-	console.log(response.data.items.snippet.channelId);
-    });*/
+    });
 }
